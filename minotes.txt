@@ -1,0 +1,68 @@
+https://reactnavigation.org/docs/bottom-tab-navigator/
+https://www.npmjs.com/package/react-native-select-dropdown
+https://www.npmjs.com/package/react-native-vector-icons
+
+
+import React, { useEffect } from 'react';
+import { View, Text, Button } from 'react-native';
+import {styles} from '../themes/dark';
+import { LineChart } from 'react-native-gifted-charts';
+
+interface HomeScreenProps {
+  navigation: any;
+}
+
+interface StockData {
+  value: number;
+}
+const ChartComponent = () => {
+  const [data, setData] = React.useState<StockData[]>([]);
+
+  useEffect(() => {
+    const apiKey = 'IHIH95YS4SPW4FI8';
+    const symbol = 'AAPL';
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${apiKey}`
+        );
+
+        const result = await response.json();
+
+        const timeSeries = result['Time series (5min)'];
+        const newData = Object.keys(timeSeries).map(timestamp => ({
+          value: parseFloat(timeSeries[timestamp]['4. Close']),
+        }));
+          
+        setData(newData);
+
+      } catch (error) {
+        console.error('error fetching StockData:', error);
+      }
+      
+    };
+
+    fetchData();
+
+    const dataInterval = setInterval(fetchData, 60000);
+      
+    return () => clearInterval(dataInterval);
+
+  }, [fetchData]);
+
+  return (
+    <View style={styles.home}>
+      <Text>Home Screen</Text>    
+      <LineChart data={data}/>
+    </View>
+  );
+
+};
+
+const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
+  return <ChartComponent />
+};
+
+
+export default HomeScreen;
