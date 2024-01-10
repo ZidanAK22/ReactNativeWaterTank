@@ -53,16 +53,7 @@ const Loginmadong: React.FC<LoginScreenProps> = ({ navigation }) => {
         console.error('Error signing in with email and password:', error.message);        
         loginError();
       }
-    };
-  
-    // const signUpWithEmailPassword = async () => {
-    //   try {
-    //     await auth().createUserWithEmailAndPassword(email, password);
-    //   } catch (error: any) {
-    //     setError(error.message);
-    //     console.error('Error signing up with email and password:', error.message);      
-    //   }
-    // };
+    };      
   
     const signUpForm = async () => {
       navigation.navigate('SignUp');
@@ -80,14 +71,14 @@ const Loginmadong: React.FC<LoginScreenProps> = ({ navigation }) => {
           placeholder="Email"
           value={email}
           onChangeText={(text) => setEmail(text)}
-          style={{ borderBottomWidth:1 }}
+          style={{ borderBottomWidth:1, color:'black' }}
         />
         <TextInput
           placeholder="Password"
           secureTextEntry
           value={password}
           onChangeText={(text) => setPassword(text)}
-          style={{ borderBottomWidth:1 }}
+          style={{ borderBottomWidth:1, color:'black' }}
         />      
         <View style={{ flex:1, flexDirection:'column' }}>
           <Pressable onPress={signInWithEmailPassword} style={styles.button}>
@@ -102,7 +93,7 @@ const Loginmadong: React.FC<LoginScreenProps> = ({ navigation }) => {
         {error && <Text style={{ color: 'red' }}>{error}</Text>}          
 
         <Pressable style={{ alignItems:'center' }} onPress={forgotPasswordForm}>
-          <Text>Forgot Password?</Text>
+          <Text style={{ color:'black' }}>Forgot Password?</Text>
         </Pressable>
       </View>
     );

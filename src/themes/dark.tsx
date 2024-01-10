@@ -25,6 +25,8 @@ export const styles = StyleSheet.create({
 
     text: {
       textAlign: 'center',      
+      color: 'black',
+      fontWeight:'bold',
     },
 
     image: {
@@ -51,6 +53,7 @@ export const styles = StyleSheet.create({
   
     bmi: {
       padding:20,
+      alignItems:'center',
     },
   
     merahbadag: {
@@ -80,8 +83,8 @@ export const styles = StyleSheet.create({
     input:{
       borderColor: 'black',
       borderRadius: 10,
-      color: 'black',
-      padding: 40,
+      color: 'black',      
+      borderBottomWidth:1,
     },
 
     operators:{

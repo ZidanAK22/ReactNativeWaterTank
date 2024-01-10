@@ -3,6 +3,7 @@ import { View, Text, ActivityIndicator, Pressable, Button, FlatList } from 'reac
 import {styles} from '../themes/dark';
 import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
+import { firebase } from '@react-native-firebase/auth';
 
 interface HomeScreenProps {
   navigation: any;  
@@ -172,13 +173,20 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       }));
   }
 
+  const user = firebase.auth().currentUser;
+
+  if (user) {
+  console.log('User email: ', user.email);
+  }
+
+
 
   return (
     <View style={styles.home}>
-      <Text>Today's USD to IDR value</Text>    
+      <Text style={{ color:'black', fontWeight:'bold' }}>Today's USD to IDR value</Text>    
       {getContent()}                
       <Button title='Add dummy data' onPress={addDummyData}/>      
-      {getListData()}
+      {getListData()}      
     </View>
   )
 };

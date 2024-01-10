@@ -45,8 +45,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     <ScrollView style={styles.login}>
       <Logo url="https://vectorified.com/image/water-tank-vector-34.png" />
       <Text style={styles.birubadag}> Water Tank Monitoring System</Text>
-      <TextInput style={{ borderBottomWidth:1 }} placeholder="Username" value={username} onChangeText={(text) => setUsername(text)}/>
-      <TextInput secureTextEntry={true} style={{ borderBottomWidth:1 }} placeholder="Password" value={password} onChangeText={(text) => setPassword(text)}/>
+      <TextInput style={{ borderBottomWidth:1, color:'red'}} placeholder="Username" value={username} onChangeText={(text) => setUsername(text)}/>
+      <TextInput secureTextEntry={true} style={{ borderBottomWidth:1, color:'black'}} placeholder="Password" value={password} onChangeText={(text) => setPassword(text)}/>
       <Text></Text>
       <Button onPress={handleLogin} title="Login" />      
     </ScrollView>

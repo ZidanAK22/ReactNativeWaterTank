@@ -67,7 +67,7 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
                           
             </View>
 
-            <SelectDropdown data={genders} defaultValue={genders[0]} onSelect={handleSelect} />      
+            <SelectDropdown data={genders} defaultValue={genders[0]} onSelect={handleSelect}/>      
 
             <View style={styles.operators}>
                 <Pressable style={styles.roundbtn} onPress={BMICalc}>
@@ -76,7 +76,7 @@ const BmiScreen = ({navigation}: {navigation: any}) => {
                                                 
             </View>
 
-            <Text style={{ padding:20 }}>Your BMI is {bmi}, which means you are {bmiCategory}</Text>
+            <Text style={{ padding:20, color:'black' }}>Your BMI is {bmi}, which means you are {bmiCategory}</Text>
             <Logo url='https://www.svgrepo.com/show/525703/calculator-minimalistic.svg'/>
         </View>
         
