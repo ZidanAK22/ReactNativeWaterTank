@@ -31,8 +31,7 @@ const SignUpScreen = () => {
     };              
 
     return (        
-        <View>
-            <Text>Asep</Text>
+        <View>            
             <TextInput
               placeholder="Email"
               value={email}
