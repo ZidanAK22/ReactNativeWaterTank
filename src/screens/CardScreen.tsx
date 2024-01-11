@@ -59,8 +59,7 @@ const CardScreen: React.FC<CardScreenProps> = ( {navigation} ) => {
       <Card containerStyle={styles.card}>
           <Card.Title>{item.currency}</Card.Title>
           <Card.Divider />
-          <View>
-              <ProfilePicture url={`https://i.imgur.com/x5KeC5s.png`} />
+          <View>              
               <Text style={styles.text}>Currency {item.currency} : {item.value}</Text>
           </View>
       </Card>        
@@ -86,6 +85,7 @@ const CardScreen: React.FC<CardScreenProps> = ( {navigation} ) => {
 
     return (        
       <View>
+          <Text>Today's USD Rate</Text>
           {getListData()}
       </View>            
     )

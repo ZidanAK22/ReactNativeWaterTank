@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import database from '@react-native-firebase/firestore'
-import { View, Text, Button, FlatList } from 'react-native';
+import { View, Text, Button, ActivityIndicator, ScrollView, Pressable, TextInput, Alert } from 'react-native';
 import { firebase } from '@react-native-firebase/firestore';
+import { styles } from '../themes/dark';
 
 interface CrudScreenProps {
     navigation: any
@@ -9,6 +9,9 @@ interface CrudScreenProps {
 
 const CrudScreen: React.FC<CrudScreenProps> = ({navigation}) => {
     const [data, setData] = useState<any[]>([]);
+    const [id, setID] = useState();
+    const [song, setSong] = useState('');
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetchData();
@@ -39,16 +42,32 @@ const CrudScreen: React.FC<CrudScreenProps> = ({navigation}) => {
         setData(result);
     };
 
-    const handleCreate = () => {
-        const newItem = { name: 'New Item' };
-        createData(newItem);
-        fetchData(); // Refresh data after creating
+    const handleCreate = (song:any) => {        
+        try {
+            setLoading(true);
+            const newSong = {Song: song};
+            createData(newSong);
+            fetchData(); 
+            Alert.alert('Success', 'Data created successfully!');
+        } catch (error: any) {
+            console.error('Error creating data:', error.message);
+            Alert.alert('Error', 'Failed to create data. Please try again.');   
+        } finally {
+            setLoading(false);
+        }
     };
 
-    const handleUpdate = (itemId:any) => {
-        const updatedItem = { name: 'Updated Item' };
-        updateData(itemId, updatedItem);
-        fetchData(); // Refresh data after updating
+    const handleUpdate = (itemId:any, song:any) => {
+        try {
+            setLoading(true);
+            const updatedItem = { Song: song };
+            updateData(itemId, updatedItem);
+            fetchData(); 
+            Alert.alert('Success', 'Data update successfully!')
+        } catch (error:any) {
+            console.error('Error update data:', error.message);
+            Alert.alert('Error', 'Failed to update data. Please try again.');  
+        }        
     };
 
     const handleDelete = (itemId:any) => {
@@ -56,15 +75,46 @@ const CrudScreen: React.FC<CrudScreenProps> = ({navigation}) => {
         fetchData(); // Refresh data after deleting
     };    
 
+    const selectData = (itemId:any) => {
+        setID(itemId);
+    }
+
     return(
-        <View>
+        <ScrollView contentContainerStyle={{alignItems:'center' }}>        
             {data.map((item) => (
-                <View key={item.id}>
-                    <Text>ID : {item.id}</Text>
-                    <Text>Song : {item.Song}</Text>
-                </View>                    
+                <Pressable
+                    key={item.id}
+                    onPress={() => selectData(item.id)}                    
+                >                
+                    <View>
+                        <Text>ID : {item.id}</Text>
+                        <Text>Song : {item.Song}</Text>                
+                    </View>                                    
+                </Pressable>                
             ))}
-        </View>
+            <TextInput
+                placeholder="Should I Stay or Should I Go"
+                value={song}
+                onChangeText={(text) => setSong(text)}
+                style={{ borderBottomWidth:1, color:'black' }}
+            />
+            <Text style={{ color:'black' }}>SelectedID : {id}</Text>
+            <Pressable onPress={() => handleDelete(id)}>
+                <Text style={styles.button}>
+                    Delete
+                </Text>
+            </Pressable>
+            <Pressable onPress={() => handleCreate(song)}>
+                <Text style={styles.button}>
+                    Add
+                </Text>
+            </Pressable>
+            <Pressable onPress={() => handleUpdate(id, song)}>
+                <Text style={styles.button}>
+                    Update
+                </Text>
+            </Pressable>            
+        </ScrollView>
     )
 }
 
