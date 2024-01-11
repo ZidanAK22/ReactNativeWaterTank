@@ -18,6 +18,7 @@ import AboutAppScreen from './src/screens/AboutAppScreen';
 import SensorScreen from './src/screens/SensorScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import PasswordScreen from './src/screens/PasswordScreen';
+import CrudScreen from './src/screens/CrudScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
@@ -58,6 +59,7 @@ const App = () => {
             <Stack.Screen name="Sensor" component={SensorScreen} />
             <Stack.Screen name="SignUp" component={SignUpScreen} />
             <Stack.Screen name="forgotPasswordForm" component={PasswordScreen} />
+            <Stack.Screen name="CrudScreen" component={CrudScreen}/>
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

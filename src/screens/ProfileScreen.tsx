@@ -46,6 +46,12 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
                 <Text style={{ fontSize:18 }}> Privacy Settings</Text>
                 <MaterialCommunityIcons name='arrow-right-circle' size={25}/>
               </View>            
+            </Pressable>
+            <Pressable onPress={() => navigation.navigate('CrudScreen')}>          
+              <View style={{ flexDirection:'row', justifyContent:'space-between', width:300, margin:5}}>
+                <Text style={{ fontSize:18 }}> CRUD </Text>
+                <MaterialCommunityIcons name='arrow-right-circle' size={25}/>
+              </View>            
             </Pressable>                           
           </View>
           <Button title='Sign out' onPress={signOut}/>
