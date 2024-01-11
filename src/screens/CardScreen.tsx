@@ -85,7 +85,7 @@ const CardScreen: React.FC<CardScreenProps> = ( {navigation} ) => {
 
     return (        
       <View>
-          <Text>Today's USD Rate</Text>
+          <Text style={{ textAlign:'center', fontSize:48, fontWeight:'bold', color:'black', marginBottom:20 }}>Today's USD Rate</Text>
           {getListData()}
       </View>            
     )

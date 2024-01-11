@@ -7,6 +7,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import { Image } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import CardScreen from '../screens/CardScreen';
+import CrudScreen from '../screens/CrudScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,8 +31,8 @@ const MainTabNavigator = () => {
             : 'home-outline';
           } else if (route.name === 'Card Screen') {
             iconName = focused ? 'note-text' : 'note-text-outline';
-          } else if (route.name === 'Bmi Calculator') {
-            iconName = focused ? 'calculator-variant' : 'calculator-variant-outline';
+          } else if (route.name === 'Song List') {
+            iconName = focused ? 'music-circle' : 'music-circle-outline';
           }
           else if (route.name === 'Profile') {
             iconName = focused ? 'head' : 'head-outline';
@@ -51,8 +52,8 @@ const MainTabNavigator = () => {
         component={CardScreen} 
       />
       <Tab.Screen 
-      name="Bmi Calculator" 
-      component={BmiScreen}     
+      name="Song List" 
+      component={CrudScreen}     
       
       />
       <Tab.Screen

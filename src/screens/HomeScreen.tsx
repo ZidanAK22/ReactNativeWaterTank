@@ -186,7 +186,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
       <Text style={{ color:'black', fontWeight:'bold' }}>Today's USD to IDR value</Text>    
       {getContent()}                
       <Button title='Add dummy data' onPress={addDummyData}/>      
-      {getListData()}      
+      {/* {getListData()}       */}
     </View>
   )
 };

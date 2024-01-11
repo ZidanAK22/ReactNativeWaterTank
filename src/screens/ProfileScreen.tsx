@@ -19,7 +19,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
     try {
       await firebase.auth().signOut();
       navigation.navigate('Login');
-      Alert.alert('Signed Out', 'Sign out successful');      
+      Alert.alert('Sign Out', 'Signed out successfully');      
     } catch (error: any) {
       setError(error.message);
       console.error('Error signing out:', error.message);
@@ -47,9 +47,9 @@ const ProfileScreen: React.FC<ProfileScreenProps> = ({ navigation }) => {
                 <MaterialCommunityIcons name='arrow-right-circle' size={25}/>
               </View>            
             </Pressable>
-            <Pressable onPress={() => navigation.navigate('CrudScreen')}>          
+            <Pressable onPress={() => navigation.navigate('BmiScreen')}>          
               <View style={{ flexDirection:'row', justifyContent:'space-between', width:300, margin:5}}>
-                <Text style={{ fontSize:18 }}> CRUD </Text>
+                <Text style={{ fontSize:18 }}> BMI Calculator </Text>
                 <MaterialCommunityIcons name='arrow-right-circle' size={25}/>
               </View>            
             </Pressable>                           

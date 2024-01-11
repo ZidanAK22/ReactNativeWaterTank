@@ -22,6 +22,7 @@ import CrudScreen from './src/screens/CrudScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import BmiScreen from './src/screens/BmiScreen';
 
 
 // type RootStackParamList = {
@@ -60,6 +61,7 @@ const App = () => {
             <Stack.Screen name="SignUp" component={SignUpScreen} />
             <Stack.Screen name="forgotPasswordForm" component={PasswordScreen} />
             <Stack.Screen name="CrudScreen" component={CrudScreen}/>
+            <Stack.Screen name="BmiScreen" component={BmiScreen}/>
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

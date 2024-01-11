@@ -11,7 +11,7 @@ interface AboutScreenProps {
 
 const AboutScreen: React.FC<AboutScreenProps> = ( {navigation} ) => {
     return (                
-              <ScrollView scrollIndicatorInsets={{ top:0, left:0, bottom:0, right:0 }} contentContainerStyle={{alignItems:'center', alignContent:'center', flex:1, flexGrow:1  }}>
+              <ScrollView scrollIndicatorInsets={{ top:0, left:0, bottom:0, right:0 }} contentContainerStyle={{alignItems:'center'}}>
                 <Text style={{ fontSize: 50, color: 'black' }}> Made By</Text>
                 <ProfilePicture url='https://i.imgur.com/x5KeC5s.png'/>                   
                 <Text style={{ fontSize:30, color:'black', fontStyle:'italic' }}> Zidan Azra Kramadibrata</Text>

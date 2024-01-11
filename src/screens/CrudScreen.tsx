@@ -80,18 +80,7 @@ const CrudScreen: React.FC<CrudScreenProps> = ({navigation}) => {
     }
 
     return(
-        <ScrollView contentContainerStyle={{alignItems:'center' }}>        
-            {data.map((item) => (
-                <Pressable
-                    key={item.id}
-                    onPress={() => selectData(item.id)}                    
-                >                
-                    <View>
-                        <Text>ID : {item.id}</Text>
-                        <Text>Song : {item.Song}</Text>                
-                    </View>                                    
-                </Pressable>                
-            ))}
+        <ScrollView contentContainerStyle={{alignItems:'center', width:'100%', backgroundColor:'white' }}>                       
             <TextInput
                 placeholder="Should I Stay or Should I Go"
                 value={song}
@@ -99,21 +88,36 @@ const CrudScreen: React.FC<CrudScreenProps> = ({navigation}) => {
                 style={{ borderBottomWidth:1, color:'black' }}
             />
             <Text style={{ color:'black' }}>SelectedID : {id}</Text>
-            <Pressable onPress={() => handleDelete(id)}>
-                <Text style={styles.button}>
-                    Delete
-                </Text>
-            </Pressable>
-            <Pressable onPress={() => handleCreate(song)}>
-                <Text style={styles.button}>
-                    Add
-                </Text>
-            </Pressable>
-            <Pressable onPress={() => handleUpdate(id, song)}>
-                <Text style={styles.button}>
-                    Update
-                </Text>
-            </Pressable>            
+
+            <View style={{ flex:1, flexDirection:'row', gap:20 }}>
+                <Pressable onPress={() => handleDelete(id)}>
+                    <Text style={styles.button}>
+                        Delete
+                    </Text>
+                </Pressable>
+                <Pressable onPress={() => handleCreate(song)}>
+                    <Text style={styles.button}>
+                        Add
+                    </Text>
+                </Pressable>
+                <Pressable onPress={() => handleUpdate(id, song)}>
+                    <Text style={styles.button}>
+                        Update
+                    </Text>
+                </Pressable>            
+            </View>
+
+            {data.map((item) => (
+                <Pressable
+                    key={item.id}
+                    onPress={() => selectData(item.id)}                    
+                >                
+                    <View>                        
+                        <Text style={{ fontWeight:'bold', fontSize:20, marginBottom:2 }}>{item.Song}</Text>                
+                        <Text>ID : {item.id} {"\n"}</Text>
+                    </View>                                    
+                </Pressable>                
+            ))}            
         </ScrollView>
     )
 }
